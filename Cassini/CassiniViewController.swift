@@ -10,26 +10,24 @@ import UIKit
 
 class CassiniViewController: UIViewController {
 
-
-
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if let url = DemoURLs.NASA[identifier] {
-//                var destination = segue.destination //1
-//                if let navcon = destination as? UINavigationController { //2 //go to extension
-//                    destination = navcon.visibleViewController ?? navcon
-                
-                if let imageVC = segue.destination.contents as? ImageViewController {
-                    imageVC.imageURL = url
-                    imageVC.title = (sender as? UIButton)?.currentTitle
-                }
+// MARK: - Navigation
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier,
+            let url = DemoURLs.NASA[identifier] {
+///DemoURLs.NASA[identifier] - get url in [:] by ("key" = segue.identifier)
+//var destination = segue.destination //1
+//if let navcon = destination as? UINavigationController {
+///2) -> to extension
+//destination = navcon.visibleViewController ?? navcon
+            
+if let imageVC = segue.destination.contents as? ImageViewController {
+                imageVC.imageURL = url
+                imageVC.title = (sender as? UIButton)?.currentTitle
             }
         }
     }
 }
+
 extension UIViewController {
     var contents : UIViewController {
         if let navcon = self as? UINavigationController {

@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct DemoURLs
-{
+struct DemoURLs {
+    
     static let stanford = Bundle.main.url(forResource: "oval", withExtension: "jpg")
   //  static let stanford = URL(string: "https://upload.wikimedia.org/wikipedia/commons/5/55/Stanford_Oval_September_2013_panorama.jpg")
     

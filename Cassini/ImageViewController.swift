@@ -5,46 +5,11 @@
 //  Created by Tarasenco Jurik on 31.03.2018.
 //  Copyright © 2018 Tarasenco Jurik. All rights reserved.
 //
-// MODEL!!!
 import UIKit
 
 class ImageViewController: UIViewController, UIScrollViewDelegate {
-    //olveis need UIScrollViewDelegate  to zoom.
-    
-    var imageURL: URL? {
-        didSet {
-            image = nil
-          //  imageView.sizeToFit() // вернуть розмер 0.
-          //  scrollView.contentSize = imageView.frame.size
-          //ушло в image{set{}}
-            if view.window != nil { //проверка MVC на екране?
-            fetchImage()
-            }
-        }
-    }
-    
-    private var image: UIImage? {
-        get {
-            return imageView.image
-        }
-        set {
-            imageView.image = newValue
-            
-            // когда устанавлеваю изменяю розмер
-            imageView.sizeToFit()
-            scrollView?.contentSize = imageView.frame.size //"?"-autlets not set jet!
-            spinner?.stopAnimating()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        //теперь я на екране!(viewDidAppear)
-        super.viewDidAppear(animated)
-        if imageView.image == nil {
-            fetchImage()
-        }
-    }
-    
+
+    //MARK: Items, Outlets
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @IBOutlet weak var scrollView: UIScrollView! {
@@ -58,21 +23,63 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    var imageView = UIImageView()
+    
+    var imageURL: URL? {
+        didSet {
+            image = nil
+          //  imageView.sizeToFit() // вернуть розмер 0.
+          //  scrollView.contentSize = imageView.frame.size
+          //ушло в image{set{}}
+            if view.window != nil { //проверка MVC на екране?
+            getMyImage()
+            }
+        }
+    }
+    
+    private var image: UIImage? {
+        get {
+            return imageView.image
+        }
+        set {
+            spinner?.stopAnimating()
+            scrollView?.contentSize = imageView.frame.size
+            imageView.image = newValue
+            imageView.sizeToFit()
+        }
+    }
+   
+    //MARK: LifeCycle
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //view's was add to a view hierarchy
+        if imageView.image == nil {
+            getMyImage()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //        if imageURL == nil {
+        //            imageURL = DemoURLs.stanford
+        //        }
+    }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    var imageView = UIImageView()
-    
-    private func fetchImage() {
+    private func getMyImage() {
         if let url = imageURL {
-            spinner?.startAnimating()
+            spinner?.startAnimating() //waiting symbol
+            
+            
             DispatchQueue.global(qos: .userInitiated).async { //[waek self] in // держит! пока не виполнит.
                 //            do {
-                let urlCOntents = try? Data(contentsOf: url)
+                let urlContents = try? Data(contentsOf: url)
                 //           } catch let error {} // поймать Ошибку!
                 DispatchQueue.main.async {
-                    if let imageData = urlCOntents, url == self.imageURL {
+                    if let imageData = urlContents, url == self.imageURL {
                         self.image = UIImage(data: imageData) //self. - check memory cycle!
                         //ушло в image{set{}}
                         //imageView.sizeToFit()
@@ -83,12 +90,6 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
                 }
             }
         }
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        if imageURL == nil {
-//            imageURL = DemoURLs.stanford
-//        }
     }
  }
 

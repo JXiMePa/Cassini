@@ -14,7 +14,6 @@
 		6BAB9AC1206FD35300FEEF9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB9ABF206FD35300FEEF9C /* LaunchScreen.storyboard */; };
 		6BAB9ACA206FD43F00FEEF9C /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB9AC9206FD43F00FEEF9C /* ImageViewController.swift */; };
 		6BAB9ACC206FDFC700FEEF9C /* DemoURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAB9ACB206FDFC700FEEF9C /* DemoURLs.swift */; };
-		6BAB9ACE206FE0ED00FEEF9C /* oval.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6BAB9ACD206FE0ED00FEEF9C /* oval.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		6BAB9AC2206FD35300FEEF9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BAB9AC9206FD43F00FEEF9C /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		6BAB9ACB206FDFC700FEEF9C /* DemoURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoURLs.swift; sourceTree = "<group>"; };
-		6BAB9ACD206FE0ED00FEEF9C /* oval.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oval.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +60,9 @@
 			children = (
 				6BAB9AC9206FD43F00FEEF9C /* ImageViewController.swift */,
 				6BAB9ACB206FDFC700FEEF9C /* DemoURLs.swift */,
-				6BAB9ACD206FE0ED00FEEF9C /* oval.jpg */,
+				6B772337207283700097E55E /* CassiniViewController.swift */,
 				6BAB9AC8206FD36D00FEEF9C /* SupportFile */,
 				6BAB9ABA206FD35300FEEF9C /* Main.storyboard */,
-				6B772337207283700097E55E /* CassiniViewController.swift */,
 				6BAB9AC2206FD35300FEEF9C /* Info.plist */,
 			);
 			path = Cassini;
@@ -140,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BAB9AC1206FD35300FEEF9C /* LaunchScreen.storyboard in Resources */,
-				6BAB9ACE206FE0ED00FEEF9C /* oval.jpg in Resources */,
 				6BAB9ABE206FD35300FEEF9C /* Assets.xcassets in Resources */,
 				6BAB9ABC206FD35300FEEF9C /* Main.storyboard in Resources */,
 			);
